@@ -1,0 +1,42 @@
+live_config_reload: true
+
+font:
+  normal:
+    family: Scientifica
+    style: Regular
+
+  size: 15.0
+
+window:
+  padding:
+    x: 20
+    y: 20
+
+
+colors:
+  # Default colors
+  primary:
+    background: '#EBE3ED'
+    foreground: '#BC8FBC'
+ 
+  # Normal colors
+  normal:
+    black:   '#29222A'
+    red:     '#B47E7E'
+    green:   '#8FB380'
+    yellow:  '#BDB484'
+    blue:    '#8090B3'
+    magenta: '#B380B3'
+    cyan:    '#80B3B3'
+    white:   '#A18DA5'
+ 
+  # Bright colors
+  bright:
+    black:   '#7C6581'
+    red:     '#C69F9F'
+    green:   '#ABC69F'
+    yellow:  '#C6C69F'
+    blue:    '#9FACC6'
+    magenta: '#C69FC6'
+    cyan:    '#9FC6C6'
+    white:   '#B9A9BC'

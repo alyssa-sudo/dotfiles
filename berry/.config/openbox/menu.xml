@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+<menu id="root-menu" label="Openbox 3">
+	<separator label="Menu"/>
+	<item label="Terminal">
+		<action name="Execute">
+			<command>alacritty</command>
+		</action>
+	</item>
+	<item label="Browser">
+		<action name="Execute">
+			<command>chromium</command>
+		</action>
+	</item>
+	<item label="File Manager">
+		<action name="Execute">
+			<command>alacritty -e ranger</command>
+		</action>
+	</item>
+	<item label="Text Editor">
+		<action name="Execute">
+			<command>alacritty -e micro</command>
+		</action>
+	</item>
+	<item label="Dark Theme">
+	    <action name="Execute">
+	    	<command>~/.config/openbox/dark.sh</command>
+	    </action>
+	</item>
+	<item label="--------------">
+		</item>
+	<menu id="screenshot" label="Screenshot">
+		<item label="Full Screen">
+			<action name="Execute">
+				<command>~/.config/openbox/full.sh</command>
+			</action>
+		</item>
+		<item label="Partial Screen">
+			<action name="Execute">
+				<command>~/.config/openbox/part.sh</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="games" label="Games">
+		<item label="Steam">
+			<action name="Execute">
+				<command>steam</command>
+			</action>
+		</item>
+		<item label="Lutris">
+			<action name="Execute">
+				<command>lutris</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="preferences" label="Preferences">
+		<item label="Wallpaper">
+			<action name="Execute">
+				<command>feh</command>
+			</action>
+		</item>
+		<item label="Openbox">
+			<action name="Execute">
+				<command>obconf</command>
+			</action>
+		</item>
+		<item label="Panel">
+			<action name="Execute">
+				<command>tint2conf</command>
+			</action>
+		</item>
+		<item label="Reconfigure">
+			<action name="Reconfigure"/>
+			<action name="Execute">
+				<command>notify-send "Openbox" "Restarting Openbox"</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="power" label="Power">
+		<item label="Lock">
+			<action name="Execute">
+				<command>betterlockscreen -l</command>
+			</action>
+		</item>
+		<item label="Suspend">
+			<action name="Execute">
+				<command>betterlockscreen -s</command>
+			</action>
+		</item>
+		<item label="Log Out">
+			<action name="Execute">
+				<command>openbox --exit</command>
+			</action>
+		</item>
+		<item label="Reboot">
+			<action name="Execute">
+				<command>alacritty -e doas reboot</command>
+			</action>
+		</item>
+		<item label="Shutdown">
+			<action name="Execute">
+				<command>alacritty -e doas poweroff</command>
+			</action>
+		</item>
+	</menu>
+</menu>
+
+</openbox_menu>

@@ -1,0 +1,40 @@
+live_config_reload: true
+
+font:
+  normal:
+    family: Curie
+    style: Regular
+
+window:
+  padding:
+    x: 20
+    y: 20
+
+
+colors:
+  # Default colors
+  primary:
+    background: '#333C4D'
+    foreground: '#9EBDFA'
+ 
+  # Normal colors
+  normal:
+    black:   '#333C4D'
+    red:     '#F9868F'
+    green:   '#71DAB7'
+    yellow:  '#F9DC85'
+    blue:    '#86ACF9'
+    magenta: '#D286F9'
+    cyan:    '#75E8F0'
+    white:   '#F0F5FE'
+ 
+  # Bright colors
+  bright:
+    black:   '#EFF2F5'
+    red:     '#FDCED2'
+    green:   '#C2EFE0'
+    yellow:  '#FCF1CF'
+    blue:    '#CFDEFC'
+    magenta: '#EDCFFC'
+    cyan:    '#D1F7FA'
+    white:   '#FAFCFF'
