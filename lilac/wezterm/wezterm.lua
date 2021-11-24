@@ -51,11 +51,11 @@ return {
 				intensity = "Bold",
 			},
 			inactive_tab = {
-				bg_color = "#282828",
+				bg_color = "#242130",
 				fg_color = colors.fg,
 			},
 			inactive_tab_hover = {
-				bg_color = "#282828",
+				bg_color = "#242130",
 				fg_color = colors.fg,
 				italic = true,
 			},
