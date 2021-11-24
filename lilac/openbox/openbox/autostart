@@ -1,0 +1,5 @@
+# Start The WM & Programs
+feh --bg-fill ~/.config/openbox/wallpaper.png &
+tint2 &
+picom &
+xrandr -r 60

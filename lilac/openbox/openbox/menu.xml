@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+<menu id="root-menu" label="Openbox 3">
+	<separator label="Menu"/>
+	<item label="terminal">
+		<action name="Execute">
+			<command>wezterm</command>
+		</action>
+	</item>
+	<item label="browser">
+		<action name="Execute">
+			<command>firefox</command>
+		</action>
+	</item>
+	<item label="file-manager">
+		<action name="Execute">
+			<command>nautilus</command>
+		</action>
+	</item>
+	<item label="editor">
+		<action name="Execute">
+			<command>gedit</command>
+		</action>
+	</item>
+	<item label="--------------">
+		</item>
+	<menu id="screenshot" label="screenshot">
+		<item label="full">
+			<action name="Execute">
+				<command>~/.config/openbox/full.sh</command>
+			</action>
+		</item>
+		<item label="part">
+			<action name="Execute">
+				<command>~/.config/openbox/part.sh</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="games" label="games">
+		<item label="steam">
+			<action name="Execute">
+				<command>steam</command>
+			</action>
+		</item>
+		<item label="lutris">
+			<action name="Execute">
+				<command>lutris</command>
+			</action>
+		</item>
+	    <item label="grapejuice">
+			<action name="Execute">
+				<command>/home/ana/.local/bin/grapejuice gui</command>
+			</action>
+	    </item>
+	</menu>
+    <menu id="music" label="music">
+		<item label="spotify">
+	</item>
+	</menu>
+	<menu id="preferences" label="preferences">
+		<item label="wallpaper">
+			<action name="Execute">
+				<command>nitrogen</command>
+			</action>
+		</item>
+		<item label="openbox">
+			<action name="Execute">
+				<command>obconf</command>
+			</action>
+		</item>
+		<item label="reconfigure">
+			<action name="Reconfigure"/>
+			<action name="Execute">
+				<command>openbox --reconfigure</command>
+			</action>
+		</item>
+		<item label="restart">
+			<action name="Restart"/>
+			<action name="Execute">
+				<command>openbox --reconfigure</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="power" label="power">
+		<item label="log-out">
+			<action name="Execute">
+				<command>openbox --exit</command>
+			</action>
+		</item>
+		<item label="reboot">
+			<action name="Execute">
+				<command>systemctl reboot</command>
+			</action>
+		</item>
+		<item label="shutdown">
+			<action name="Execute">
+				<command>systemctl poweroff</command>
+			</action>
+		</item>
+	</menu>
+</menu>
+
+</openbox_menu>
