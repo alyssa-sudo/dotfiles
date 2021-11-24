@@ -1,5 +1,5 @@
 # ~ dotfiles ~
-My dotfiles consist of rices for different machines, each with their own name and theme.
+My dotfiles consist of rices for different machines, each with their own name and theme based on a fruit or flower.
 ## Lilac
 ![image](https://user-images.githubusercontent.com/83582297/143190033-91bc567e-f2b8-4e58-a9b1-9163251b035a.png)
 ![image](https://user-images.githubusercontent.com/83582297/143190222-f5e8b957-0af8-488a-8625-3f5740011dff.png)
