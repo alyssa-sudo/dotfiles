@@ -1,0 +1,3 @@
+tint2 &
+picom --config /etc/xdg/picom/picom.conf &
+feh --bg-fill ~/Pictures/wallpapers/berry.jpeg &
