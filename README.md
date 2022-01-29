@@ -8,7 +8,8 @@ My dotfiles consist of rices for different machines, each with their own name an
 soon:tm:
 ## Tulip
 soon:tm:
-## Rose
-soon:tm:
+## Madoka
+![image](https://user-images.githubusercontent.com/83582297/151650359-bf9cfed6-5cae-4fad-bfe1-5a2d486efcce.png)
+![image](https://user-images.githubusercontent.com/83582297/151650363-def1192a-e05c-4bf9-b43a-d257ce5b3619.png)
 # Install
 soon:tm:
