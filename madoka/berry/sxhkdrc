@@ -1,0 +1,88 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+alt + Return
+	wezterm
+
+alt + r
+	rofi -show run
+	
+# make sxhkd reload its configuration files:
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+alt + shift + q
+	berryc quit
+
+alt + shift + r
+	$HOME/.config/berry/autostart
+
+# laptop control keys
+XF86MonBrightnessUp
+	./.config/berry/brightness.sh up
+
+XF86MonBrightnessDown
+	./.config/berry/brightness.sh down
+
+XF86AudioMute
+	pulsemixer --toggle-mute
+
+XF86AudioRaiseVolume
+	pulsemixer --change-volume +5
+
+XF86AudioLowerVolume
+	pulsemixer --change-volume -5
+
+XF86AudioMicMute
+	pulsemixer --id source-1 --toggle-mute
+
+XF86Tools
+	rofi -show keys
+
+XF86Search
+	rofi -show drun
+
+XF86LaunchA
+	rofi -show window
+
+# berry hotkeys
+alt + {h, j, k, l}
+    berryc window_move {-50 0, 0 50, 0 -50, 50 0}
+
+alt + shift +  {h, j, k, l}
+    berryc window_resize {-50 0, 0 50, 0 -50, 50 0}
+
+alt + {1-9}
+    berryc switch_workspace {0-9}
+
+alt + shift + {1-9}
+    berryc send_to_workspace {0-9}
+
+alt + m
+    berryc window_monocle
+
+alt + f
+    berryc fullscreen
+
+alt +  p
+    berryc snap_right
+
+alt + o 
+    berryc snap_left
+
+alt + n
+    berryc toggle_decorations
+
+alt + Tab
+    berryc cycle_focus
+
+alt + q
+    berryc window_close
+
+alt + c
+    berryc window_center
+
+~button1
+    berryc pointer_focus

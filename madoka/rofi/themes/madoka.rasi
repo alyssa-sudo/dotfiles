@@ -1,0 +1,59 @@
+configuration {
+    modi: "drun,run";
+    display-drun: "Apps";
+    display-run: "Run";
+    drun-display-format: "{name}";
+    font: "Scientifica 8";
+}
+
+* {
+    bg: #1b1924;
+    bg1: #0003;
+    fg: #fff;
+    fg1: #d7757d;
+    rad: 0px;
+}
+
+
+* {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+entry, element { border-radius: @rad; }
+
+mainbox {
+    children: [ inputbar, listview ];
+    padding: 1em;
+    spacing: 1em;
+    border: 26px 2px 2px;
+    border-color: @fg1;
+    margin: 2px;
+}
+
+inputbar { children: [ entry ]; }
+
+entry {
+    blink: false;
+    padding: 2%;
+    placeholder: "Search";
+    background-color: @bg1;
+    border: 0 0 2px 0;
+    border-color: @fg1;
+}
+
+listview {
+    lines: 6;
+    columns: 2;
+    cycle: false;
+}
+
+element { padding: 2%; }
+
+element selected, element-text selected {
+    background-color: @fg1;
+    text-color: @bg;
+}
+
+element, element selected, element-text { cursor: pointer; }
+entry { cursor: text; }
