@@ -1,0 +1,26 @@
+# Titlebar
+titlebar_padding 10
+title_align center
+default_border normal 2
+font pango:Dina 10
+seat seat0 xcursor_theme phinger-cursors-light 16
+
+# Use exclusively tabbed
+# workspace_layout tabbed
+
+# Gaps
+gaps inner 20
+gaps outer 2
+
+output * bg ~/Downloads/gruvbox_image31.png fill #3C3638
+
+# Set the background and foreground colors to white
+set $bg #D65D0E
+set $fg #282828
+set $fg2 #ebdbb2
+
+# Set the border color to white
+client.focused_inactive $bg $bg $bg 
+client.focused $bg $bg $bg $bg 
+client.unfocused $bg $bg $bg
+client.urgent $bg $bg $bg

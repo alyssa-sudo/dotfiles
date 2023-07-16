@@ -1,0 +1,57 @@
+{
+    "mode": "dock",
+    "fixed-center": "true",
+    "gtk-layer-shell": "true",
+    "exclusive": "false",
+    "layer": "top",
+    "margin": 0,
+    "position": "top",
+    "height": 30,
+    // "width": 30,
+    "modules-center": ["sway/window"],
+    "modules-left": ["sway/mode", "clock", "sway/workspaces"],
+    "modules-right": ["wireplumber", "battery", "battery#bat2"], 
+    "wireplumber": {
+    	    "format": "{icon}",
+	    "on-click":  "helvum",
+	    "max-volume": 100,
+	    "tooltip-format": "{volume}",
+    	    "format-muted": "",
+            "format-icons": ["", "", ""]
+    },
+    "sway/mode": {
+	"format": "{}",
+    },
+    "clock": {
+        "interval": 60,
+	"timezones": ["America/New_York", "US/Hawaii"],
+	"tooltip-format": "{calendar}",
+	"format": "{:%I:%M %p}",
+	"format-alt": "{:%a %h %d}"
+    },
+    "battery": {
+	"bat": "BAT1",
+	"format": "{icon}",
+	"format-icons": ["", "", "", "", ""],
+	"tooltip-format": "{timeTo} {capacity}%",
+    },
+    "battery#bat2": {
+        "bat": "BAT0",
+	"format": "{icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{timeTo} {capacity}%",
+    },
+    "sway/workspaces": {
+	"disable-scroll": true,
+    	"persistent_workspaces": {
+		"1": [],
+		"2": [],
+		"3": [],
+		"4": [],
+    },
+    "sway/window": {
+	"max-length": 10,
+    }
+  }
+}
+

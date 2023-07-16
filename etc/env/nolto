@@ -1,0 +1,5 @@
+# Env setup to disable LTO for problem builds
+CFLAGS="${CFLAGS} -fno-lto"
+CXXFLAGS="${CXXFLAGS} -fno-lto"
+FCFLAGS="${FCFLAGS} -fno-lto"
+FFLAGS="${FFLAGS} -fno-lto"

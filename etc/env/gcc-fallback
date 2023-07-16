@@ -1,0 +1,11 @@
+COMMON_FLAGS="-march=broadwell -O2 -pipe"
+CFLAGS="${CFLAGS}"
+CXXFLAGS="${CFLAGS}"
+
+CC="gcc"
+CXX="g++"
+AR="ar"
+NM="nm"
+RANLIB="${CHOST}-ranlib"
+
+LDFLAGS="-Wl,--as-needed"

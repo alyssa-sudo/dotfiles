@@ -1,0 +1,21 @@
+media-sound/alsamixer-app
+dev-libs/date ~amd64
+sys-libs/gcompat ~amd64
+dev-lang/ghc ~amd64
+# Haskell has no stable keywords in Gentoo
+dev-haskell/*
+
+# Only needed if using ::haskell, but harmless if not.
+# May as well put it in, just in case for future use.
+*/*::haskell
+
+x11-misc/pcmanfm ~amd64
+x11-libs/libfm ~amd64
+gui-apps/waybar ~amd64
+gui-apps/swww ~amd64
+gui-apps/wf-recorder ~amd64
+gui-apps/wev ~amd64
+gui-apps/eww ~amd64
+dev-lang/rust ~amd64
+gui-wm/swayfx ~amd64
+app-misc/nnn ~amd64

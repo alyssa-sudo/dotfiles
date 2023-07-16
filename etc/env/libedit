@@ -1,0 +1,2 @@
+# /etc/portage/env/libedit
+CFLAGS="${CFLAGS} -D__STDC_ISO_10646__=201103L"
