@@ -1,46 +1,93 @@
-window#waybar {
+#waybar {
 	background: #282828;
         border-bottom: 2px solid #d65d0e;
-	font-family: Dina;
+	font-family: Dina, Siji;
 }
 
-#wireplumber
-	{
-	color: #ebdbb2;
-	font-size: 16;
-        background: rgba(0,0, 0, 0);
+#battery {
+    color: #ebdbb2;
+    font-family: Siji;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #3C3836;
+    font-size: 14px;
+    border-left: 0px solidrgba(0,0, 0, 0); 
+    border-right: 0px solid rgba(0, 0, 0, 0);
+    margin: 5px 0px 7px 0px;
+    padding: 0px 5px 0px 5px;
+}
+
+#battery.bat2 {
+        color: #ebdbb2;
+    background: rgba(0, 0, 0, 0);
+        font-family: Siji;
         border: 2px solid #3C3836;
-        margin: 10px 0px 12px 5px;
-	border-right: 0px solid rgba(0,0, 0, 0); 
-        padding: 10px 1px 10px 10px;
+        font-size: 14px;
+        border-left: 0px solid rgba(0, 0, 0, 0);
+        margin: 5px 5px 7px 0px;
+        padding: 0px 5px 0px 5px;
+}
+
+#clock {
+        color: #ebdbb2;
+        background: #282828;
+        border: 2px solid #3C3836;
+        margin: 5px 0px 7px 5px;
+        font-size: 12px;
+        padding: 7px 5px 5px 5px; 
 }
 
 tooltip {
+	font-family: Dina;
+	font-size: 12px;
 	background: #282828;
 	border: 2px solid #3C3836;
 	border-radius: 0px 0px 0px 0px;
+	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 tooltip label {
-	font-family: Dina;
-	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-	font-size: 12px;
+	color: #ebdbb2
+}
+
+#wireplumber {
 	color: #ebdbb2;
+	font-size: 12px;
+	padding: 5px 7px 5px 6px;
+	margin: 5px 0px 7px 5px;
+	border: 2px solid #3C3836;
 }
 
 #mode {
 	color: #ebdbb2;
 	background: #282828;
 	border: 2px solid #3C3836;
-	margin: 10px 5px 12px 5px;
+	margin: 5px 0px 7px 5px;
 	padding: 5px 5px 5px 5px;
+}
+
+
+#custom-launcher {
+        color: #ebdbb2;
+        background: #282828;
+        border: 2px solid #3C3836;
+        margin: 5px 0px 7px 5px;
+        padding: 5px 5px 5px 5px;
+}
+
+#custom-power {
+        color: #ebdbb2;
+	font-size: 12px;
+        background: #282828;
+        border: 2px solid #3C3836;
+        margin: 5px 5px 7px 5px;
+        padding: 5px 7px 5px 6px;
 }
 
 #workspaces button {
 	color: #ebdbb2;
 	background: #282828;
 	border: 2px solid #3C3836;
-	margin: 15px 0px 9px 5px;
+	margin: 5px 0px 7px 5px;
 	padding: 0px 5px 0px 5px;
 	border-radius: 0px 0px 0px 0px;
 }
@@ -55,52 +102,35 @@ tooltip label {
 #workspaces button.focused:hover {
 	color: #ebdbb2;
 	background: #282828;
-	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 	border: 2px solid #3C3836;
-	border-bottom: 2px solid #d79921;
+	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	transition-timing-function: ease-out;
+	transition-delay: 0ms;
+	border-bottom: 2px solid #d65d0e;
+	/* border-bottom: 2px solid #d79921; */
 }
 
 #workspaces button:hover {
         color: #ebdbb2;
         background: #282828;
         text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-        border: 2px solid #3C3836;
+        border: 2px solid #504945;
+	transition-timing-function: ease-out;
+        transition-delay: 0ms;
+	animation-duration: 0s;
 	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 #window {
 	color: #ebdbb2;
-	margin: 10px 5px 7px 5px;
+	margin: 5px 5px 7px 5px;
 }
 
 #clock {
 	color: #ebdbb2;
         background: #282828;
         border: 2px solid #3C3836;
-        margin: 10px 5px 7px 5px;
+        margin: 5px 0px 7px 5px;
 	font-size: 12px;
-	padding: 5px 10px 5px 10px; 
-}
-
-#battery {
-	color: #ebdbb2;
-	font-family: Cozette;
-	background: rgba(0, 0, 0, 0);
-	border: 2px solid #3C3836;
-	font-size: 20px;
-	border-left: 0px solidrgba(0,0, 0, 0); 
-	border-right: 0px solid rgba(0, 0, 0, 0);
-	margin: 10px 0px 7px 0px;
-	padding: 5px 5px 5px 10px;
-}
-
-#battery.bat2 {
-        color: #ebdbb2;
-	background: rgba(0, 0, 0, 0);
-        font-family: Cozette;
-        border: 2px solid #3C3836;
-        font-size: 20px;
-        border-left: 0px solid rgba(0, 0, 0, 0);
-        margin: 10px 5px 12px 0px;
-        padding: 10px 10px 10px 5px;
+	padding: 7px 5px 5px 5px; 
 }

@@ -1,57 +1,64 @@
 {
-    "mode": "dock",
-    "fixed-center": "true",
-    "gtk-layer-shell": "true",
-    "exclusive": "false",
-    "layer": "top",
-    "margin": 0,
-    "position": "top",
-    "height": 30,
-    // "width": 30,
-    "modules-center": ["sway/window"],
-    "modules-left": ["sway/mode", "clock", "sway/workspaces"],
-    "modules-right": ["wireplumber", "battery", "battery#bat2"], 
-    "wireplumber": {
-    	    "format": "{icon}",
-	    "on-click":  "helvum",
-	    "max-volume": 100,
-	    "tooltip-format": "{volume}",
-    	    "format-muted": "",
-            "format-icons": ["", "", ""]
+	"exclusive": "false",
+	"fixed-center": "true",
+	"gtk-layer-shell": "true",
+	"height": 30,
+	"layer": "top",
+	"position": "top",
+	"margin": 0,
+	"mode": "dock",
+	"modules-center": ["sway/window"],
+	"modules-left": ["custom/launcher", "sway/mode", "sway/workspaces"],
+	"modules-right": ["wireplumber", "battery", "battery#bat2", "clock", "custom/power"],
+	"wireplumber": {
+		"format": "{icon}",
+		"max-volume": 100,
+		"scroll-step": 0.2,
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"tooltip-format": "{volume}",
+		"format-muted": "",
+		"format-icons": ["", ""]
+	},
+	"battery": {
+		"bat": "BAT1",
+ 		"format": "{icon}",
+ 		"format-icons": ["Đ", "", "", "", ""],
+ 		"tooltip-format": "{timeTo} {capacity}%"
+	},
+	"battery#bat2": {
+		"bat": "BAT0",
+ 		"format": "{icon}",
+ 		"format-icons": ["", "", "", "", ""],
+		"tooltip-format": "{timeTo} {capacity}%"
+	},
+	"clock": {
+		"interval": 60,
+		"timezones": ["America/New_York", "US/Hawaii"],
+		"tooltip-format": "{calendar}",
+		"format": " {:%I:%M %p}",
+		"format-alt": "{:%a %h %d}"
+	},
+	"custom/launcher": {
+		"format": "::",
+		"on-click": "$HOME/.config/sway/bemenu"
+	},
+	"custom/power": {
+		"format": "",
+		"on-click": "$HOME/.config/sway/bemenu-power"
+	},
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"persistent_workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+			"4": []
+	},
+	"sway/mode": {
+		"format": "{}"
+	},
+	"sway/window": {
+		"max-length": 10
+	},
     },
-    "sway/mode": {
-	"format": "{}",
-    },
-    "clock": {
-        "interval": 60,
-	"timezones": ["America/New_York", "US/Hawaii"],
-	"tooltip-format": "{calendar}",
-	"format": "{:%I:%M %p}",
-	"format-alt": "{:%a %h %d}"
-    },
-    "battery": {
-	"bat": "BAT1",
-	"format": "{icon}",
-	"format-icons": ["", "", "", "", ""],
-	"tooltip-format": "{timeTo} {capacity}%",
-    },
-    "battery#bat2": {
-        "bat": "BAT0",
-	"format": "{icon}",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip-format": "{timeTo} {capacity}%",
-    },
-    "sway/workspaces": {
-	"disable-scroll": true,
-    	"persistent_workspaces": {
-		"1": [],
-		"2": [],
-		"3": [],
-		"4": [],
-    },
-    "sway/window": {
-	"max-length": 10,
-    }
-  }
 }
-
