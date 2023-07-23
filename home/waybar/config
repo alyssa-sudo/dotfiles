@@ -9,7 +9,17 @@
 	"mode": "dock",
 	"modules-center": ["sway/window"],
 	"modules-left": ["custom/launcher", "sway/mode", "sway/workspaces"],
-	"modules-right": ["wireplumber", "battery", "battery#bat2", "clock", "custom/power"],
+	"modules-right": ["network", "wireplumber", "battery", "battery#bat2", "clock", "custom/power"],
+	"network": {
+		"interface": "wlan0",
+		"format-wifi": "",
+ 		"format-ethernet": "",
+		"format-disconnected": "",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-disconnected": "Disconnected",
+		"max-length": 50
+	},
 	"wireplumber": {
 		"format": "{icon}",
 		"max-volume": 100,
@@ -22,13 +32,13 @@
 	"battery": {
 		"bat": "BAT1",
  		"format": "{icon}",
- 		"format-icons": ["Đ", "", "", "", ""],
+ 		"format-icons": ["", "", "", ""],
  		"tooltip-format": "{timeTo} {capacity}%"
 	},
 	"battery#bat2": {
 		"bat": "BAT0",
  		"format": "{icon}",
- 		"format-icons": ["", "", "", "", ""],
+		"format-icons": ["", "", "", ""],
 		"tooltip-format": "{timeTo} {capacity}%"
 	},
 	"clock": {
