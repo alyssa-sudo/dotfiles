@@ -1,0 +1,26 @@
+# Titlebar
+titlebar_padding 10
+title_align center
+default_border normal 2
+font pango:Dina 10
+seat seat0 xcursor_theme phinger-cursors-light 16
+
+# Use exclusively tabbed
+workspace_layout tabbed
+
+# Gaps
+gaps inner 20
+gaps outer 2
+
+output * bg $HOME/Downloads/wall.png fill
+
+# Set the background and foreground colors to white
+set $bg #808EB1
+set $fg #FFFFFF
+set $fg2 #282B39
+
+# Set the border color to white
+client.focused_inactive $bg $bg $fg 
+client.focused $bg $bg $fg 
+client.unfocused $bg $bg $fg2
+client.urgent $bg $bg $fg

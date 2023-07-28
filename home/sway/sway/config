@@ -1,0 +1,22 @@
+# Logo key. Use Mod1 for Alt.
+set $mod Mod1
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term foot
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu ~/.config/sway/bemenu
+
+include ~/.config/sway/autostart
+include ~/.config/sway/keys
+include ~/.config/sway/bar
+include /etc/sway/config-vars.d/*
+include /etc/sway/config.d/*
+include ~/.config/sway/themes/madoka/gruvbox-theme
+#include ~/.config/sway/laptop
+include ~/.config/sway/display

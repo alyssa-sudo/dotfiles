@@ -1,0 +1,17 @@
+# Touchpad
+input "1739:0:Synaptics_TM3075-002" {
+	dwt disabled
+	tap enabled
+	natural_scroll enabled
+	middle_emulation enabled
+}
+
+# Keyboard
+bindsym XF86WLAN ~/.config/sway/scripts/wifi.lua
+bindsym XF86WakeUp+space exec ~/kb.lua
+bindsym XF86AudioMute exec ~/.config/sway/scripts/vol.sh mute
+bindsym XF86AudioRaiseVolume exec ~/.config/sway/scripts/vol.sh up
+bindsym XF86AudioLowerVolume exec ~/.config/sway/scripts/vol.sh down
+bindsym XF86AudioMicMute exec ~/.config/sway/scripts/vol.sh mic_mute
+bindsym XF86MonBrightnessUp exec ~/.config/sway/scripts/light.sh up
+bindsym XF86MonBrightnessDown exec ~/.config/sway/scripts/light.sh down
