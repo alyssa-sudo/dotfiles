@@ -1,13 +1,13 @@
 #waybar {
 	background: #282828;
-        border-bottom: 2px solid #d65d0e;
+	border-bottom: 2px solid #d65d0e;
 	font-family: Dina, Siji;
 }
 
 #battery {
 	color: #ebdbb2;
 	font-family: Siji;
-	background: rgba(0, 0, 0, 0);
+	background: #282828;
 	border: 2px solid #3C3836;
 	font-size: 12px;
 	border-right: 0px solid rgba(0, 0, 0, 0);
@@ -17,7 +17,7 @@
 
 #battery.bat2 {
         color: #ebdbb2;
-    	background: rgba(0, 0, 0, 0);
+        background: #282828;
         font-family: Siji;
         border: 2px solid #3C3836;
         font-size: 12px;
@@ -32,7 +32,7 @@
         border: 2px solid #3C3836;
         margin: 5px 0px 7px 5px;
         font-size: 12px;
-        padding: 7px 5px 5px 5px; 
+        padding: 7px 5px 5px 5px;
 }
 
 tooltip {
@@ -50,6 +50,7 @@ tooltip label {
 
 #wireplumber {
 	color: #ebdbb2;
+	background: #282828;
 	font-size: 12px;
 	padding: 5px 7px 5px 6px;
 	margin: 5px 0px 7px 5px;
@@ -58,6 +59,7 @@ tooltip label {
 
 #network {
         color: #ebdbb2;
+        background: #282828;
         font-size: 12px;
         padding: 5px 7px 5px 6px;
         margin: 5px 0px 7px 5px;
@@ -130,6 +132,7 @@ tooltip label {
 
 #window {
 	color: #ebdbb2;
+	background: #282828;
 	margin: 5px 5px 7px 5px;
 }
 
@@ -139,5 +142,5 @@ tooltip label {
         border: 2px solid #3C3836;
         margin: 5px 0px 7px 5px;
 	font-size: 12px;
-	padding: 7px 5px 5px 5px; 
+	padding: 7px 5px 5px 5px;
 }

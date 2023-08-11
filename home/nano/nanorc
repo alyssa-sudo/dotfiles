@@ -1,0 +1,15 @@
+set linenumbers
+set magic
+set numbercolor white,black
+set mouse
+set zero
+set autoindent
+set errorcolor red,black
+set promptcolor white,black
+set statuscolor white,black
+set casesensitive
+set softwrap
+set atblanks
+set positionlog
+set smarthome
+include "~/.config/nano/syntax_colors/lua.nanorc"

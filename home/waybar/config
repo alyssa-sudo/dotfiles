@@ -1,6 +1,5 @@
 {
 	"exclusive": "false",
-	"fixed-center": "true",
 	"gtk-layer-shell": "true",
 	"height": 30,
 	"layer": "top",
@@ -10,10 +9,13 @@
 	"modules-center": ["sway/window"],
 	"modules-left": ["custom/launcher", "sway/mode", "sway/workspaces"],
 	"modules-right": ["network", "wireplumber", "battery", "battery#bat2", "clock", "custom/power"],
+	"sway/window": {
+                "max-length": 50,
+                "tooltip": false
+        },
 	"network": {
-		"interface": "wlan0",
 		"format-wifi": "",
- 		"format-ethernet": "",
+		"format-ethernet": "",
 		"format-disconnected": "",
 		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
 		"tooltip-format-ethernet": "{ifname} ",
@@ -31,13 +33,13 @@
 	},
 	"battery": {
 		"bat": "BAT1",
- 		"format": "{icon}",
- 		"format-icons": ["", "", "", ""],
- 		"tooltip-format": "{timeTo} {capacity}%"
+		"format": "{icon}",
+		"format-icons": ["", "", "", ""],
+		"tooltip-format": "{timeTo} {capacity}%"
 	},
 	"battery#bat2": {
 		"bat": "BAT0",
- 		"format": "{icon}",
+		"format": "{icon}",
 		"format-icons": ["", "", "", ""],
 		"tooltip-format": "{timeTo} {capacity}%"
 	},
@@ -50,10 +52,12 @@
 	},
 	"custom/launcher": {
 		"format": "::",
+		"tooltip": false,
 		"on-click": "$HOME/.config/sway/bemenu"
 	},
 	"custom/power": {
 		"format": "",
+		"tooltip": false,
 		"on-click": "$HOME/.config/sway/bemenu-power"
 	},
 	"sway/workspaces": {
@@ -66,9 +70,6 @@
 	},
 	"sway/mode": {
 		"format": "{}"
-	},
-	"sway/window": {
-		"max-length": 10
 	},
     },
 }
