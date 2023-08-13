@@ -1,4 +1,3 @@
-media-sound/alsamixer-app
 dev-libs/date ~amd64
 sys-libs/gcompat ~amd64
 dev-lang/ghc ~amd64

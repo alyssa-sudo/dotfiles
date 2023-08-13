@@ -6,7 +6,6 @@ media-video/ffmpeg x264
 www-client/firefox hwaccel
 sys-apps/flatpak -polictykit -seccomp
 app-crypt/gcr gtk
-#dev-lang/ghc ghcbootstrap
 media-gfx/imv jpeg png
 net-wireless/iwd standalone
 dev-libs/libdbusmenu gtk3
@@ -18,7 +17,7 @@ x11-misc/pcmanfm
 media-video/pipewire echo-cancel ffmpeg flatpak gstreamer extra jack-sdk pipewire-alsa sound-server v4l
 dev-qt/qtcore icu
 dev-qt/qtgui egl 
-media-fonts/source-han-sans ja ko zh-CN zh-HK zh-TW
+media-fonts/source-han-sans ja ko
 gui-wm/sway wallpapers
 gui-apps/swaybg gdk-pixbuf
 sys-boot/grub grub_platforms_pc
@@ -27,5 +26,4 @@ x11-base/xorg-server -minimal
 dev-lang/rust nightly
 gui-wm/swayfx grimshot
 dev-lang/python -pgo
-xfce-base/thunar -trash-panel-plugin
 xfce-base/thunar -trash-panel-plugin
