@@ -12,7 +12,7 @@ seat seat0 xcursor_theme phinger-cursors-light 16
 gaps inner 20
 gaps outer 2
 
-output * bg ~/Downloads/gruvmesa2.png fill #3C3836
+output * bg ~/.config/sway/wallpapers/gruvmesa2.png fill #3C3836
 
 # Set the background and foreground colors to white
 set $bg #D65D0E
