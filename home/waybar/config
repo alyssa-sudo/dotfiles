@@ -2,13 +2,32 @@
 	"exclusive": "false",
 	"gtk-layer-shell": "true",
 	"height": 30,
-	"layer": "top",
+	"layer": "bottom",
 	"position": "top",
 	"margin": 0,
-	"mode": "dock",
+	"mode": "",
 	"modules-center": ["sway/window"],
 	"modules-left": ["custom/launcher", "sway/mode", "sway/workspaces"],
 	"modules-right": ["network", "wireplumber", "battery", "battery#bat2", "clock", "custom/power"],
+	"clock": {
+        "interval": 60,
+        "timezones": ["America/New_York", "US/Hawaii"],
+        "tooltip-format": "{calendar}",
+        "format": " {:%I:%M %p}",
+        "format-alt": "{:%a %h %d}",
+		"calendar": {
+			"format": {
+				"today": "<u>{}</u>",
+			},
+			"actions": {
+				"on-scroll-up": "shift_up",
+				"on-scroll-down": "shift_down",
+			},
+		},
+        "actions": {
+        	"on-click-right": "tz_up",
+        },
+    },
 	"sway/window": {
                 "max-length": 50,
                 "tooltip": false
@@ -43,13 +62,6 @@
 		"format-icons": ["", "", "", ""],
 		"tooltip-format": "{timeTo} {capacity}%"
 	},
-	"clock": {
-		"interval": 60,
-		"timezones": ["America/New_York", "US/Hawaii"],
-		"tooltip-format": "{calendar}",
-		"format": " {:%I:%M %p}",
-		"format-alt": "{:%a %h %d}"
-	},
 	"custom/launcher": {
 		"format": "::",
 		"tooltip": false,
@@ -71,5 +83,5 @@
 	"sway/mode": {
 		"format": "{}"
 	},
-    },
+  },	
 }

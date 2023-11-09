@@ -1,0 +1,20 @@
+{
+	"exclusive": "false",
+	"gtk-layer-shell": "true",
+	"height": 30,
+	"layer": "top",
+	"position": "top",
+	"margin-top": -2,
+	"margin-left": -2,
+	"margin-right": -2,
+	"mode": "overlay",
+	"modules-left": ["custom/corner"],
+	"modules-right": ["custom/corner#corner2"],
+	"custom/corner": {
+		"format": " ",
+		"rotate": 90
+	},
+	"custom/corner#corner2": {
+		"format": " "
+	},
+}

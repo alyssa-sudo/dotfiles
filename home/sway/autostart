@@ -1,4 +1,5 @@
 exec --no-startup-id dbus-update-activation-environment --all
+exec /usr/libexec/xdg-desktop-portal-termfilechooser -r
 exec /usr/libexec/xdg-desktop-portal-gtk -r
 exec /usr/libexec/xdg-desktop-portal-wlr -r
 exec /usr/libexec/flatpak-portal -r
@@ -6,3 +7,5 @@ exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec gentoo-pipewire-launcher &
 exec mako &
 exec foot --server &
+exec waybar &
+exec waybar -c ~/.config/waybar/config-corner -s ~/.config/waybar/style-corner.css &

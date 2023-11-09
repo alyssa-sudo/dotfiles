@@ -11,6 +11,10 @@ set $term footclient
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu ~/.config/sway/bemenu
+# GTK
+set $gnome-schema org.gnome.desktop.interface
+# Scaling
+output eDP-1 scale 1
 
 include ~/.config/sway/autostart
 include ~/.config/sway/keys
@@ -20,3 +24,5 @@ include /etc/sway/config.d/*
 include ~/.config/sway/themes/madoka/gruvbox-theme
 include ~/.config/sway/laptop
 include ~/.config/sway/display
+include ~/.config/sway/window-rules
+include ~/.config/sway/gtk

@@ -1,7 +1,7 @@
 # Titlebar
 titlebar_padding 10
 title_align center
-default_border normal 2
+default_border pixel 2
 font pango:Dina 10
 seat seat0 xcursor_theme phinger-cursors-light 16
 
@@ -9,6 +9,8 @@ seat seat0 xcursor_theme phinger-cursors-light 16
 # workspace_layout tabbed
 
 # Gaps
+smart_borders on
+smart_gaps on
 gaps inner 20
 gaps outer 2
 

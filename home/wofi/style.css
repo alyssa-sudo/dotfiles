@@ -1,0 +1,43 @@
+window {
+margin: 0px;
+background-color: rgba(40, 40, 40, 50);
+font-family: monospace;
+font-size: 16px;
+}
+
+#input {
+margin: 50px;
+color: #c6c6c6;
+}
+
+
+#img {
+text-align: top;
+}
+
+#inner-box {
+margin: 5px;
+border: none;
+}
+
+#outer-box {
+margin: 0px;
+border: none;
+}
+
+#text {
+margin: 5px;
+text-align: bottom;
+border: none;
+color: #c6c6c6;
+} 
+
+#entry:selected {
+	text-align: bottom;
+	font-weight: normal;
+}
+
+#text:selected {
+	color: #080808;
+	font-weight: normal;
+}

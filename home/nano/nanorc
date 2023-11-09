@@ -12,4 +12,5 @@ set softwrap
 set atblanks
 set positionlog
 set smarthome
+set tabsize 4
 include "~/.config/nano/syntax_colors/lua.nanorc"

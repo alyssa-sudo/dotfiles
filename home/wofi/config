@@ -1,0 +1,8 @@
+show=drun
+allow_images=true
+height=768
+width=1366
+layer=overlay
+prompt=Search
+columns=100
+image_size=48
