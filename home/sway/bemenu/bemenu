@@ -1,0 +1,29 @@
+#!/bin/sh
+font="Source Sans 3 Bold 10"
+bg="#19191e"
+fg="#9999a8"
+hint="#505a82"
+
+exec /usr/bin/bemenu -n \
+					 -w \
+					 -i \
+					 -b \
+					 -M 0 \
+					 -H 45 \
+					 --ch 15 \
+					 --cw 2 \
+					 --fn "$font" \
+					 --hp 5 \
+					 --tb "$bg" \
+					 --fb "$bg" \
+					 --nb "$bg" \
+					 --sb "$bg" \
+					 --hb "$bg" \
+					 --fbb "$bg" \
+					 --ab "$bg" \
+					 --tf "$fg" \
+					 --hf "$hint" \
+					 --nf "$fg" \
+					 --fbf "$fg" \
+					 --af "$fg" \
+					 "$@"

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+current_power_profile=$(powerprofilesctl get)
+
+
+set_power_profile() {
+power_profile=$1
+
+if powerprofilesctl set "$power_profile"; then
+	notify-send "Power Profile Changed:" "Profile set to $power_profile"
+fi
+}
+
+battery_menu() {
+power_options="Power-Saver%s\nBalanced%s\nPerformance%s\nCancel"
+chosen_profile=$(printf "$power_options" | bemenu -p "Choose a profile:" | tr '[:upper:]' '[:lower:]')
+
+case "$chosen_profile" in
+	"power-saver" | "balanced" | "performance")
+	if [ "$chosen_profile" = "$current_power_profile" ]; then
+		notify-send "Power Profile already set." "No change has been made."
+	else
+    	set_power_profile "$chosen_profile"
+    fi
+    ;;
+    "cancel")
+    	notify-send "Operation canceled." "No change has been made."
+		;;
+	*)
+	if [ "$chosen_profile" != "" ]; then
+		notify-send "Invalid selection." "Please choose a valid power profile."
+    fi
+    ;;
+esac
+}
+
+battery_menu "$@"

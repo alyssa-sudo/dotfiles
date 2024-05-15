@@ -1,29 +1,31 @@
 group-by=app-name
 sort=-time
 layer=overlay
-background-color=#282828
+background-color=#19191e
 width=250
 height=300
 border-size=2
 margin=10, 10, 10, 10
 padding=0, 0, 25, 10
-border-color=#d65d0e
-# border-radius=10
+border-color=#505a82
+text-color=#9999a8
+on-notify=exec mpv $HOME/material_product_sounds/wav/02\ Alerts\ and\ Notifications/notification_decorative-02.wav
+border-radius=5
 icons=1
 max-icon-size=64
 default-timeout=5000
 ignore-timeout=1
-font=Dina 10
+font="Source Sans 3"
 progress-color=#282828
 
 [urgency=low]
-border-color=#d65d0e
+border-color=#505a82
 
 [urgency=normal]
-border-color=#d65d0e
+border-color=#505a82
 
 [urgency=high]
-border-color=#d65d0e
+border-color=#505a82
 default-timeout=0
 
 [category=mpd]

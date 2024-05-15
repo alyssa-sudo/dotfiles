@@ -1,0 +1,39 @@
+#!/bin/sh
+
+get_real_device_name() {
+  if [ -n "$selected_audio_device" ]; then
+    actual_sink=$(pactl list sinks | grep -B 1 "Description: $selected_audio_device" | grep 'Name: ' | cut -d' ' -f2-)
+    return 0
+  else
+    return 1
+  fi
+}
+
+confirm() {
+  case "$selected_audio_device" in
+    "Yes")
+      pactl set-default-sink "$actual_sink"
+      pactl list short sink-inputs | while read -r input; do
+        pactl move-sink-input "$(echo "$input" | cut -f1)" "$actual_sink"
+      done
+      notify-send "Audio device changed." "Changed audio device to $selected_audio_device"
+      ;;
+    "No")
+      notify-send "Cancelled" "User chose not to change audio device."
+      return
+      ;;
+  esac
+}
+
+switch_audio_device() {
+  current_audio_device=$(pactl get-default-sink)
+  selected_audio_device=$(pactl list sinks | grep 'Description: ' | cut -d' ' -f2- | bemenu -p "Switch Audio Output:")
+
+  if [ "$selected_audio_device" = "$current_audio_device" ]; then
+    get_real_device_name
+  else
+    confirm
+  fi
+}
+
+switch_audio_device "$@"

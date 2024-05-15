@@ -1,0 +1,108 @@
+[
+{
+	"name": "spaces",
+	"gtk-layer-shell": "true",
+	"exclusive": false,
+	"passthrough": false,
+    "layer": "top",
+    "height": 30,
+    "width": 20,
+    "margin-top": 20,
+    "position": "top",
+    "modules-center": ["sway/workspaces", "custom/windowed"],
+    "sway/workspaces": {
+    	"format": "{icon}",
+    	"format-icons": {
+    		"1": " ",
+    		"2": " ",
+    		"3": " ",
+    		"4": " "
+    	},
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+			"4": []
+        },
+    },
+},
+{
+	"name": "controls",
+	"gtk-layer-shell": true,
+	"exclusive": false,
+	"passthrough": false,
+	"layer": "top",
+	"height": 30,
+	"margin-bottom": 5,
+	"position": "bottom",
+	"spacing": -7,
+	"modules-right": ["custom/controlmax", "custom/controlmin", "custom/controlx"],
+	"custom/controlmax": {
+		"format": " ",
+		"on-click": "swaymsg fullscreen toggle"
+	},
+	"custom/controlmin": {
+		"format": " ",
+		"on-click": "swaymsg move scratchpad",
+		"on-double-click": "swaymsg scratchpad show"
+	},
+	"custom/controlx": {
+		"format": " ",
+		"on-click": "swaymsg kill"
+	},
+},
+{
+	"name": "widget",
+	"gtk-layer-shell": true,
+	"exclusive": false,
+	"passthrough": false,
+	"layer": "bottom",
+
+	"height": 500,
+	"width": 325,
+	"position": "left",
+	"modules-left": ["custom/headphones", "pulseaudio/slider", "custom/battery", "upower", "custom/brightness", "backlight/slider"],
+    "upower": {
+    	"format": "{percentage}",
+    	"format-alt": "{percentage}",
+       	"show-icon": true,
+        "native-path": "/org/bluez/hci0/dev_18_26_54_F5_B5_D1",
+        "hide-if-empty": false,
+    },
+	"custom/headphones": {
+		"format": "",
+	},
+	"pulseaudio/slider": {
+		"min": 0,
+		"max": 127,
+		"orientation": "horizontal"
+	},
+	"custom/battery": {
+		"format": "",
+	},
+	"custom/brightness": {
+		"format": "",
+	},
+	"backlight/slider": {
+    	"min": 0,
+    	"max": 100,
+    	"orientation": "horizontal",
+    	"device": "intel_backlight"
+	},
+},
+{
+	"name": "sep",
+	"gtk-layer-shell": true,
+    "exclusive": false,
+    "passthrough": false,
+    "layer": "bottom",
+    "height": 500,
+    "margin-left": 330,
+    "width": 50,
+    "position": "left",
+    "modules-left": ["custom/sep"],
+   	"custom/sep": {
+		"format": " ",
+    },
+}
+]

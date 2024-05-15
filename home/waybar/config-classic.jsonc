@@ -1,0 +1,20 @@
+{
+    "name": "main",
+    "exclusive": true,
+    "gtk-layer-shell": true,
+    "height": 30, 
+    "layer": "top",
+    "position": "bottom",
+    "margin": 0,
+    "mode": "dock",
+	"modules-left": ["custom/start"],
+    "modules-right": ["clock"],
+	"custom/start": {
+	"format": "始める", 
+	},
+    "clock": {
+      "interval": 60,
+      "timezones": ["America/New_York"],
+      "format": "{:%I:%M %p}",
+    },
+  }

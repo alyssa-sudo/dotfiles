@@ -1,0 +1,237 @@
+#!/bin/sh
+
+bluetooth_menu() {
+    options="List\nScan\nDevices\nCancel"
+    selected=$(echo -e $options | bemenu -n -b -M 0 -p "Bluetooth Menu:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+    
+    case $selected in
+        "List")
+            list_devices
+            ;;
+        "Scan")
+            scan_devices
+            ;;
+        "Devices")
+        	devices_menu
+            ;;
+        "Cancel")
+            return
+            ;;
+    esac
+}
+
+devices_menu() {
+	options="Paired Devices\nTrusted Devices\nConnected Devices\nBlocked Devices\nCancel"
+    selected=$(echo -e $options | bemenu -n -b -M 0 -p "Bluetooth Menu:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+
+    case $selected in
+    	"Paired Devices")
+    		list_paired_devices
+    		;;
+    	"Trusted Devices")
+    		list_trusted_devices
+    		;;
+    	"Cancel")
+    		return
+    		;;
+    esac
+}
+
+list_devices() {
+    devices=$(bluetoothctl scan on | awk '{print}')
+    
+    if [ -z "$devices" ]; then
+        notify-send "No devices found."
+    else
+        selected_device=$(echo -e "$devices" | bemenu -n -b -M 0 -p "Select Device:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8" | awk '{print $1}')
+        
+        if [ -n "$selected_device" ]; then
+            connect_device "$selected_device"
+        fi
+    fi
+}
+
+list_paired_devices() {
+    devices=$(bluetoothctl devices Paired | awk '{print $2}')
+    
+    if [ -z "$devices" ]; then
+        notify-send "No paired devices found."
+    else
+        selected_device=$(echo -e "$devices" | bemenu -n -b -M 0 -p "Select Paired Device:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8" | awk '{print $1}')
+        
+        if [ -n "$selected_device" ]; then
+            connect_or_unpair_paired_device "$selected_device"
+        fi
+    fi
+}
+
+list_trusted_devices() {
+    devices=$(bluetoothctl devices | awk '{print $2}')
+    trusted_devices=$(bluetoothctl devices Trusted | awk '{print $2}')
+    
+    if [ -z "$trusted_devices" ]; then
+        notify-send "No trusted devices found."
+    else
+        selected_device=$(echo -e "$trusted_devices" | bemenu -n -b -M 0 -p "Select Trusted Device:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8" | awk '{print $1}')
+        
+        if [ -n "$selected_device" ]; then
+            connect_or_untrust_trusted_device "$selected_device"
+        fi
+    fi
+}
+
+list_connected_devices() {
+    devices=$(bluetoothctl devices | awk '{print $2}')
+    connected_devices=$(bluetoothctl devices Connected | awk '{print $2}')
+    
+    if [ -z "$connected_devices" ]; then
+        notify-send "No connected devices found."
+    else
+        selected_device=$(echo -e "$connected_devices" | bemenu -n -b -M 0 -p "Select Connected Device:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8" | awk '{print $1}')
+        
+        if [ -n "$selected_device" ]; then
+            disconnect_from_device "$selected_device"
+        fi
+    fi
+}
+
+function scan_devices {
+    notify-send "Scanning for Bluetooth devices..."
+    bluetoothctl scan on
+    sleep 5  # Adjust the duration of scanning as needed
+    
+    devices=$(bluetoothctl devices | awk '{print $2}')
+    
+    if [ -z "$devices" ]; then
+        notify-send "No devices found during scan."
+    else
+        notify-send "Devices found."
+        list_devices
+    fi
+    
+    bluetoothctl scan off
+}
+
+function connect_device {
+    device=$1
+    
+    notify-send "Connecting to $device..."
+    bluetoothctl connect $device
+    
+    if [ $? -eq 0 ]; then
+        notify-send "Connected to $device"
+        show_device_info "$device"
+        trust_device_prompt
+    else
+        notify-send "Failed to connect to $device"
+    fi
+}
+
+function connect_or_unpair_paired_device {
+    device=$1
+    
+    options="Connect\nUnpair\nCancel"
+    selected=$(echo -e $options | bemenu -n -b -M 0 -p "Options for $device:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+    
+    case $selected in
+        "Connect")
+            connect_device "$device"
+            ;;
+        "Unpair")
+            unpair_device "$device"
+            ;;
+        "Cancel")
+            return
+            ;;
+    esac
+}
+
+
+
+function connect_or_untrust_trusted_device {
+    device=$1
+    
+    options="Connect\nUntrust\nCancel"
+    selected=$(echo -e $options | bemenu -n -b -M 0 -p "Options for $device:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+    
+    case $selected in
+        "Connect")
+            connect_device "$device"
+            ;;
+        "Untrust")
+            untrust_device "$device"
+            ;;
+        "Cancel")
+            return
+            ;;
+    esac
+}
+
+function disconnect_from_device {
+    device=$1
+    
+    options="Disconnect\nCancel"
+    selected=$(echo -e $options | bemenu -n -b -M 0 -p "Options for $device:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+    
+    case $selected in
+        "Disconnect")
+            disconnect_device "$device"
+            ;;
+        "Cancel")
+            return
+            ;;
+    esac
+}
+
+function disconnect_device {
+    device=$1
+    
+    notify-send "Disconnecting from $device..."
+    bluetoothctl connect $device
+    
+    if [ $? -eq 0 ]; then
+        notify-send "Disconnected from $device"
+        show_device_info "$device"
+        trust_device_prompt
+    else
+        notify-send "Failed to disconnect from $device"
+    fi
+}
+
+function unpair_device {
+	device=$1
+
+	notify-send "Unpairing $device..."
+	bluetoothctl remove $device
+	notify-send "Device $device unpaired."
+}
+
+function untrust_device {
+    device=$1
+    
+    notify-send "Untrusting $device..."
+    bluetoothctl untrust $device
+    notify-send "Device $device untrusted."
+}
+
+function show_device_info {
+    device=$1
+    battery_info=$(bluetoothctl info $device | grep "Battery" | awk '{$1=$2=""; print $0}')
+    device_name=$(bluetoothctl info $device | grep "Device" | awk '{$1=$2=""; print $0}')
+    
+    notify-send "$device_name $battery_info"
+}
+
+function trust_device_prompt {
+    options="Yes\nNo"
+    selected=$(echo -e $options | bemenu -n -b -M 0 -p "Trust Device?" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+    
+    if [[ $selected = "Yes" ]]; then
+        bluetoothctl trust
+        notify-send "Device trusted."
+    elif [[ $selected = "No" ]]; then
+        notify-send "Device not trusted."
+    fi
+}
+
+bluetooth_menu

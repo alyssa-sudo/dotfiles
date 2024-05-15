@@ -1,0 +1,164 @@
+window.spaces#waybar {
+	font-family: "Font Awesome 6 Free";
+	background: #FFFFFF;
+	border-radius: 10px;
+}
+
+window.controls#waybar {
+	background-color: transparent;
+	color: transparent;
+	border-radius: 30px;
+}
+
+window.sep#waybar {
+	background-color: #1D3B9B;
+	color: transparent;
+	border-radius: 0;
+}
+
+window.widget#waybar {
+	background-color: #1D3B9B;
+	color: transparent;
+	border-radius: 0;
+}
+
+window.sep#waybar {
+	background-color: #1D3B9B;
+	color: transparent;
+	border-radius: 0;
+}
+
+#waybar.spaces #workspaces button.persistent {
+	color: #DBDBDB;
+	background: #DBDBDB;
+	border-radius: 28px;
+	margin: 5px 15px 5px 15px;
+	padding: 5px 0px 5px 0px;
+}
+
+#waybar.spaces #workspaces button.focused {
+	color: #537AE5;
+	background: #537AE5;
+	border-radius: 28px;
+	margin: 5px 15px 5px 15px;
+	padding: 5px 0px 5px 0px;
+}
+
+#waybar.spaces #workspaces button {
+	color: rgba(0, 0, 0, 0);
+  	background-position: right bottom, left top;
+  	background-repeat: no-repeat, repeat;
+	border: 2px solid #FFFFFF;
+	background: linear-gradient(
+    to top, 
+    #DBDBDB 0%, 
+    #DBDBDB 60%, 
+    #463F41 60%, 
+    #463F41 100%
+	);
+	border-radius: 28px;
+	margin: 5px 15px 5px 15px;
+	padding: 5px 0px 5px 0px;
+}
+	
+#waybar.controls #custom-controlmax {
+	background: #FFFFFF;
+	background-clip: padding-box;
+	border: 3px solid #3D3D3D;
+	border-radius: 30px;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 3px 5px 3px;
+}
+
+#waybar.controls #custom-controlmin {
+	background: #FBAF4E;
+	background-clip: padding-box;
+	border: 3px solid #3D3D3D;
+	border-radius: 32px;
+	margin: 5px 15px 5px 15px;
+	padding: 5px 3px 5px 3px;
+}
+
+#waybar.controls #custom-controlx {
+	background: #FB584E;
+	background-clip: padding-box;
+	border: 3px solid #3D3D3D;
+	border-radius: 32px;
+	margin: 5px 5px 5px 0px;
+	padding: 5px 3px 5px 3px;
+}
+
+#waybar.widget #custom-headphones {
+	font-size: 46px;
+	margin: 20px 0px 20px 0px;
+	color: #DBDBDB;
+}
+
+#waybar.widget #custom-battery {
+    font-size: 46px;
+    margin: 20px 0px 20px 0px;
+    color: #DBDBDB;
+}
+
+#waybar.widget #custom-brightness {
+    font-size: 46px;
+    margin: 20px 0px 20px 0px;
+    color: #DBDBDB;
+}
+
+#waybar.widget #upower {
+	font-size: 46px;
+    font-family: "Source Sans 3";
+    margin: 10px 0px 10px -200px;
+    color: #DBDBDB;
+}
+
+#waybar.widget #pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#waybar.widget #pulseaudio-slider trough {
+    min-height: 20px;
+    margin: 5px 5px 5px 5px;
+    min-width: 10px;
+    border-radius: 20px;
+    background-color: #DBDBDB;
+}
+
+#waybar.widget #pulseaudio-slider highlight {
+	min-height: 20px;
+	margin: 5px 5px 5px 5px;
+    min-width: 10px;
+    border-radius: 20px;
+    background-color: #537AE5;
+}
+
+#waybar.widget #backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#waybar.widget #backlight-slider trough {
+    min-height: 20px;
+    margin: 5px 5px 5px 5px;
+    min-width: 10px;
+    border-radius: 20px;
+    background-color: #DBDBDB;
+}
+
+#waybar.widget #backlight-slider highlight {
+    min-height: 20px;
+    margin: 5px 5px 5px 5px;
+    min-width: 10px;
+    border-radius: 20px;
+    background-color: #537AE5;
+}

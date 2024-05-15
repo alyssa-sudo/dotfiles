@@ -1,2 +1,0 @@
-#!/bin/bash
-bemenu-run -p "Run Application:" -H 39 --ch 15 --cw 2 --fn "Dina 10" --hp 5 --tb "#282828" --fb "#282828" --nb "#282828" --sb "#282828" --hb "#282828" --fbb "#282828" --ab "#282828" --tf "#ebdbb2" --hf "#d65d0e" --nf "#ebdbb2" --fbf "#ebdbb2" --af "#ebdbb2"

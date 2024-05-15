@@ -1,0 +1,31 @@
+#waybar {
+	background: #9d97bf;
+	border-top: 1px solid #000000;
+	font-family: Terminus-ja, Dina;
+}
+
+#custom-start {
+	font-size: 12px;
+	font-family: Terminus-ja;
+	-webkit-font-smoothing: none;
+	color: #000000;
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #FFFFFF;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	
+}
+
+#clock {
+    font-size: 12px;
+    color: #000000;
+    font-family: Dina;
+    border-top: 1px inset #000000;
+    border-right: 1px inset #000000;
+    border-bottom: 1px inset #FFFFFF;
+    border-left: 1px inset #FFFFFF;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+}

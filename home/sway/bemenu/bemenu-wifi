@@ -1,0 +1,188 @@
+#!/bin/bash
+
+function get_wifi_device {
+	device=$(iwctl device list | tail -n +5 | sed 's/\x1B\[[0-9;]*[JKmsu]//g; s/>[[:space:]]*//g' | awk '{print $1}')
+	echo "$device"
+}
+
+function get_current_wifi {
+	current_network=$(iwctl station "$device" show | grep "Connected network" | awk '{print $3}')
+	echo "$current_network"
+}
+
+function get_known_wifi {
+	known_wifi=$(iwctl known-networks list | tail -n +5 | sed 's/\x1B\[[0-9;]*[JKmsu]//g; s/>[[:space:]]*//g' | perl -nle 'print /^(.*?)\s{3}/p')
+	echo "$known_wifi"
+}
+
+function is_open {
+	security_type="$1"
+	[ "$security_type" == "open" ]
+}
+
+function is_known {
+    ssid="$1"
+    known_wifi=$(get_known_wifi)
+    grep -q "$ssid" <<< "$known_wifi"
+}
+
+function connect_wifi {
+    device=$(get_wifi_device)
+    ssid="$1"
+    security_type="$2"
+    password=""
+    counter=1
+
+    if ! is_open "$security_type" && ! is_known "$ssid"; then
+        # Prompt for password only for non-open networks
+        password=$(echo "" | bemenu -x -n -b -M 0 -p "Enter Password for $ssid:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+
+        if [ -z "$password" ]; then
+            notify-send "Canceled" "Password not provided. Connection canceled."
+            return
+        fi
+    fi
+
+    iwctl_output=$(iwctl station "$device" connect "$ssid" -P "$password" 2>&1)
+
+    if [ ! "$iwctl_output" ]; then
+        sleep 5
+        notify-send "Connected" "Successfully connected to $ssid"
+    elif echo "$iwctl_output" | grep -q -E "(Operation failed|Argument format is invalid)"; then
+        while [ "$counter" -lt 3 ]; do
+            sleep 5
+            notify-send "Password Incorrect." "Try again (Attempt $counter)"
+            password=$(echo "" | bemenu -x -n -b -M 0 -p "Enter Password for $ssid:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+            counter=$((counter + 1))
+            if [ -z "$password" ]; then
+                notify-send "Failed" "Password not provided. Connection canceled."
+                return
+            fi
+        done
+        notify-send "Incorrect password entered 3 times." "Reverting to previous network"
+        iwctl station "$device" connect "$(get_current_wifi)"
+    else
+        sleep 5
+        notify-send "Failed" "Failed to connect to $ssid. Reconnecting to $current_wifi"
+        iwctl station "$device" connect "$(get_current_wifi)"
+    fi
+}
+
+function disconnect_wifi {
+	device=$(get_wifi_device)
+	ssid="$1"
+	iwctl station "$device" disconnect
+	notify-send "Disconnect" "You've been disconnected from $ssid"
+}
+
+function forget_wifi {
+	device=$(get_wifi_device)
+	ssid="$1"
+	iwctl known-networks "$ssid" forget
+	notify-send "Forgotten" "You have forgotten $ssid"
+}
+
+
+function wifi_submenu {
+	device=$(get_wifi_device)
+	current_wifi=$(get_current_wifi)
+	ssid="$1"
+	security_type="$2"
+	if [ "$ssid" == "$current_wifi" ]; then
+		submenu_options="Disconnect\nCancel"
+	else
+		submenu_options="Connect\nCancel"
+	fi
+	submenu_selection=$(echo -e "$submenu_options" | bemenu -n -b -M 0 -p "Options for $ssid:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+	
+    case "$submenu_selection" in
+    	"Connect")
+    		connect_wifi "$ssid" "$security_type"
+    		;;
+    	"Disconnect")
+    		disconnect_wifi "$ssid"
+    		;;
+    	"Cancel")
+    		pkill bemenu && wifi_menu "$@"
+    		;;
+    	"return")
+    		return
+    esac
+}
+
+function known_wifi_menu {
+    current_wifi=$(get_current_wifi)
+    known_wifi=$(get_known_wifi)
+    device=$(get_wifi_device)
+
+    submenu_selection=$(echo -e "$known_wifi\nCancel" | bemenu -n -b -M 0 -p "Known Networks:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+
+    if [ -z "$submenu_selection" ] || [ "$submenu_selection" == "Cancel" ]; then
+        wifi_menu
+    fi
+
+    ssid="$submenu_selection"
+    security_type=$(iwctl known-networks "$ssid" show | grep "Security" | awk '{print $2}')
+
+    if [ "$ssid" == "$current_wifi" ]; then
+        submenu_options="Disconnect\nForget\nCancel"
+    else
+        submenu_options="Connect\nForget\nCancel"
+    fi
+
+    submenu_option_selection=$(echo -e "$submenu_options" | bemenu -n -b -M 0 -p "Options for $ssid:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+
+    case "$submenu_option_selection" in
+        "Disconnect")
+            disconnect_wifi "$ssid"
+            ;;
+        "Connect")
+            connect_wifi "$ssid" "$security_type"
+            echo "$ssid" "$current_wifi"
+            ;;
+        "Forget")
+            forget_wifi "$ssid"
+            ;;
+        "Cancel")
+            pkill bemenu && known_wifi_menu
+       		;;
+       	"Escape")
+       		return
+    esac
+}
+
+
+
+function wifi_menu {
+    ssid="$1"
+    current_wifi=$(get_current_wifi)
+    device=$(get_wifi_device)
+    securities=("psk" "wep" "wpa" "sae" "802.1x" "open")
+    option="Known Networks"
+    fix_space=1
+ 	network_info=$(iwctl station "$device" get-networks | tail -n +5 | sed 's/\x1B\[[0-9;]*[JKmsu]//g; s/>//' | awk '{print $1}')
+
+    if [ "$ssid" == "$current_wifi" ]; then
+        options="Disconnect\nCancel"
+    else
+        options="Connect\nCancel"
+    fi
+
+    selected_network_info=$(echo -e "$option\n$network_info" | bemenu -n -b -M 0 -p "Select Network:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+
+    if [ -z "$selected_network_info" ] || [ "$selected_network_info" = "Cancel" ]; then
+        return
+    elif [ "$selected_network_info" = "$option" ]; then
+        known_wifi_menu "$ssid" "$security_type"
+    else
+        selected_network=($(echo -e "$selected_network_info"))
+        ssid="${selected_network[0]}"	
+        security_type="${selected_network[1]}"
+
+        if [ "$ssid" != "" ]; then
+            wifi_submenu "$ssid" "$security_type"
+        fi
+    fi
+}
+
+wifi_menu "$@"

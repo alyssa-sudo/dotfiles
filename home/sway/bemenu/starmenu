@@ -1,0 +1,166 @@
+#!/bin/sh
+
+bemenu_app() {
+	opts="Font\nForeground\nBackground\nHint"
+	run=$(printf "$opts" | bemenu)
+	case "$run" in
+		"Font")
+			bemenu_ch_app
+			;;
+		"Foreground")
+			bemenu_ch_app
+			;;
+		"Background")
+			bemenu_ch_app
+			;;
+		"Hint")
+			bemenu_ch_app
+	esac	
+}
+
+bemenu_ch_app() {
+    bemenu_app=$(bemenu_app)
+
+    selected_option=$(printf "Edit Script\nExit" | bemenu)
+
+    case "$selected_option" in
+        "Edit Font")
+            # Use bemenu to get user input
+            new_color=$(printf "" | bemenu)
+
+            # Check if the user provided input
+            if [ -n "$new_color" ]; then
+                # Specify the line number and variable you want to change
+                line_number=$(grep -n "fg=" "$SCRIPT_FILE" | cut -d ":" -f 1)
+                variable_name="fg"
+
+                # Use sed to replace the variable in the script file
+                sed -i "${line_number}s/\($variable_name=\).*/\1$new_color/" "$SCRIPT_FILE"
+            fi
+            ;;
+        "Edit Script")
+			
+            ;;
+        "Exit")
+            # Exit the script
+            exit 0
+            ;;
+    esac
+}
+
+appearance() {
+	opts="Bemenu\nWaybar\nSway"
+	run=$(printf "$opts" | bemenu)
+	case "$run" in
+		"Bemenu")
+			bemenu_app
+			;;
+		"Waybar")
+			waybar
+			;;
+		"Sway")
+			sway_appearance
+			;;
+		"Cancel")
+			return
+	esac
+}
+
+settings() {
+	opts="System\nBluetooth & Devices\nNetwork & Internet\nApperance\nTime & Language\nUpdates\nCancel"
+	run=$(echo -e "$opts" | bemenu)
+	case "$run" in
+		"System")
+			system
+			;;
+		"Bluetooth & Devices")
+			bemenu-bluetooth
+			;;
+		"Network & Internet")
+			bemenu-wifi
+			;;
+		"Apperance")
+			appearance
+			;;
+		"Time & Language")
+			time_lang
+			;;
+		"Updates")
+			updates
+			;;
+		"Cancel")
+			return
+	esac
+}
+
+submenu() {
+    options="Run\nUninstall\nCancel"
+    run=$(echo -e "$options" | bemenu)
+    case "$run" in
+        "Run")
+            run_command
+            ;;
+        "Uninstall")
+            uninstall
+            ;;
+        "Cancel")
+            return
+    esac
+}
+
+apps() {
+    app=$(j4-dmenu-desktop --no-exec --dmenu=bemenu)
+    execute=$(echo "$app" | sh)  # Execute the chosen app
+    echo "$execute"
+}
+
+programs() {
+    run=$(bemenu-run)
+    echo "$run"
+}
+
+run_command() {
+    app=$(apps)
+    program=$(programs)
+    
+    if [ "$app" != "$program" ]; then
+        flatpak run "$app"
+    else
+        echo "$program"
+    fi
+}
+
+uninstall() {
+    program=$(programs)
+    app=$(apps)
+    
+    if [ "$app" = "Run" ]; then
+        flatpak uninstall "$program"
+    else
+        emerge --deselect "$program"
+    fi
+}
+
+main() {
+    options="Files\nApps\nPrograms\nSettings"
+    run=$(echo -e "$options" | bemenu)
+
+    case "$run" in
+    	"Files")
+    		thunar
+    		;;
+        "Apps")
+			apps
+            ;;
+        "Programs")
+            programs
+            ;;
+        "Settings")
+        	settings
+        	;;
+        "Cancel")
+            return
+    esac
+}
+
+main "$@"

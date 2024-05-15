@@ -1,183 +1,173 @@
-#waybar {
-	background: #282828;
+window.main#waybar {
+	background: #19191e;
 	box-shadow: 2px 2px 0px #FFF;
-	border-left: 8px solid #282828;
-	border-right: 8px solid #282828;
-	border-bottom: 2px solid #d65d0e;
-	font-family: Dina, Siji;
+	border-right: 2px solid #505a82;
+	font-family: "Source Sans 3", "Font Awesome 6 Free";
 }
 
-#battery {
-	color: #ebdbb2;
-	font-family: Siji;
-	box-shadow: 0px 3px 0px 0px #32302f;
-	background: #282828;
-	border: 2px solid #3C3836;
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px;
-	font-size: 12px;
-	border-right: 0px solid rgba(0, 0, 0, 0);
-	margin: 5px 0px 10px 5px;
-	padding: 0px 0px 0px 5px;
+window.controls#waybar {
+	background: none;
 }
 
-#battery.bat2 {
-        color: #ebdbb2;
-        background: #282828;
-        font-family: Siji;
-        border: 2px solid #3C3836;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 0px;
-        border-top-left-radius: 0px;
-        font-size: 12px;
-        border-left: 0px solid rgba(0, 0, 0, 0);
-        margin: 5px 0px 10px 0px;
-        padding: 0px 5px 0px 2px;
+window.cornerone#waybar {
+    background: rgba(0, 0, 0, 0);
+    font-family: Dina, Siji
 }
 
-#clock {
-        color: #ebdbb2;
-        background: #282828;
-        box-shadow: 0px 3px 0px 0px #32302f;
-        border: 2px solid #3C3836;
-        border-radius: 5px;
-        margin: 5px 0px 10px 5px;
-        font-size: 12px;
-        padding: 7px 5px 5px 5px;
+
+window.cornertwo#waybar {
+    background: rgba(0, 0, 0, 0);
+    font-family: Dina, Siji;
+}
+
+#waybar.main #battery, #battery.bat2 {
+	color: #9999a8;
+	font-family: "Font Awesome 6 Free";
+	font-size: 14px;
+	box-shadow: 0px 3px 0px 0px #222228;
+	background: #19191e;
+	border: 2px solid #2b2b33;
+	border-radius: 5px;
+	margin: 5px 5px 5px 3px;
+	padding: 10px 0px 10px 0px;
+}
+
+#waybar.main #clock {
+    color: #9999a8;
+    font-weight: bold;
+    background: #19191e;
+    box-shadow: 0px 3px 0px 0px #222228;
+    border: 2px solid #2b2b33;
+    border-radius: 5px;
+    margin: 5px 5px 5px 3px;
+    font-size: 12px;
+    padding: 10px 0px 10px 5px;
 }
 
 tooltip {
-	font-family: Dina;
+	font-family: "Source Sans 3";
+	font-weight: bold;
 	font-size: 12px;
-	background: #282828;
-	border: 2px solid #3C3836;
+	background: #19191e;
+	border: 2px solid #2b2b33;
 	border-radius: 5px;
-	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 tooltip label {
-	color: #ebdbb2
+	color: #9999a8;
 }
 
-#wireplumber {
-	color: #ebdbb2;
-	background: #282828;
-	box-shadow: 0px 3px 0px 0px #32302f;
-	font-size: 12px;
-	padding: 5px 7px 5px 6px;
-	margin: 5px 0px 10px 5px;
-	border: 2px solid #3C3836;
+#waybar.main #custom-laucher {
+	font-size: 20px;
+}
+
+#waybar.main #wireplumber, #network, #custom-launcher, #custom-power, #custom-bluetooth, #custom-discipline {
+	color: #9999a8;
+	background: #19191e;
+	box-shadow: 0px 3px 0px 0px #222228;
+	border: 2px solid #2b2b33;
 	border-radius: 5px;
+	margin: 5px 5px 5px 3px;
+	padding: 10px 0px 10px 0px;
 }
 
-#network {
-        color: #ebdbb2;
-        background: #282828;
-        box-shadow: 0px 3px 0px 0px #32302f;
-        font-size: 12px;
-        padding: 5px 7px 5px 6px;
-        margin: 5px 0px 10px 5px;
-        border: 2px solid #3C3836;
-        border-radius: 5px;
+#waybar.main #network {
+	font-size: 10px;
 }
 
-#mode {
-	color: #ebdbb2;
-	box-shadow: 0px 3px 0px 0px #32302f;
-	background: #282828;
-	border: 2px solid #3C3836;
-	margin: 5px 0px 10px 5px;
-	padding: 5px 5px 5px 5px;
-}
-
-
-#custom-launcher {
-        color: #ebdbb2;
-        background: #282828;
-        box-shadow: 0px 3px 0px 0px #32302f;
-        border: 2px solid #3C3836;
-        border-radius: 5px;
-        margin: 5px 0px 10px 5px;
-        padding: 5px 5px 5px 5px;
-}
-
-
-#custom-power {
-        color: #ebdbb2;
-		font-size: 12px;
-		box-shadow: 0px 3px 0px 0px #32302f;
-        background: #282828;
-        border-radius: 5px;
-        border: 2px solid #3C3836;
-        margin: 5px 5px 10px 5px;
-        padding: 5px 7px 5px 6px;
-}
-
-#workspaces button {
-	color: #ebdbb2;
-	background: #282828;
-	box-shadow: 0px 3px 0px 0px #32302f;
-	border: 2px solid #3C3836;
-	margin: 5px 0px 10px 5px;
-	padding: 0px 5px 0px 5px;
+#waybar.main #workspaces button {
+	color: #9999a8;
+	font-weight: bold;
+	background: #19191e;
+	box-shadow: 0px 3px 0px 0px #222228;
+	border: 2px solid #2b2b33;
 	border-radius: 5px;
+	margin: 5px 5px 5px 3px;
+	padding: 5px 0px 5px 0px;
 }
 
-#workspaces button.focused {
-	color: #ebdbb2;
-	background: #282828;
-	border: 2px solid #3C3836;
-	box-shadow: 0px	3px 0px	0px #d65d0e;
+#waybar.main #workspaces button.focused {
+	box-shadow: 0px 3px 0px 0px #505a82;
 }
 
-#workspaces button.focused:hover {
-	color: #ebdbb2;
-	background: #282828;
-	border: 2px solid #504945;
-	box-shadow: 0px	3px 0px	0px #fe8019;
-	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+#waybar.main #workspaces button:hover {
+	box-shadow: 0px 3px 0px 0px #2b2b33;
 	transition-timing-function: ease-out;
 	transition-delay: 0ms;
-	/* border-bottom: 2px solid #d79921; */
-}
-
- #workspaces button.focused:active {
-    color: #ebdbb2;
-    background: #282828;
-    border: 2px solid #504945;
-    box-shadow: 0px 2px 0px 0px #fe8019;
-    text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-    margin: 7px 0px 8px 5px;
-    animation: ease-out;
-    transition: ease-out;
-    /* border-bottom: 2px solid #d79921; */
-}
-
-#workspaces button:hover {
-        color: #ebdbb2;
-        background: #282828;
-		border: 2px solid #504945;
-        box-shadow: 0px	3px 0px	0px #3C3836;
-        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-	transition-timing-function: ease-out;
-        transition-delay: 0ms;
 	animation-duration: 0s;
 }
 
-#window {
-	color: #ebdbb2;
-	background: #282828;
-	margin: 5px 5px 7px 5px;
+#waybar.main #workspaces button.focused:hover {
+	box-shadow: 0px 3px 0px 0px #727a9b;
+	transition-timing-function: ease-out;
+	transition-delay: 0ms;
 }
 
-#clock {
-	color: #ebdbb2;
-        background: #282828;
-        border: 2px solid #3C3836;
-        margin: 5px 0px 10px 5px;
-	font-size: 12px;
-	padding: 7px 5px 5px 5px;
+#waybar.main #workspaces button.focused:active {
+	box-shadow: 0px 2px 0px 0px #727a9b;
+	margin: 7px 8px 5px 5px;
+}
+
+#waybar.cornerone #custom-corner {
+    border: 2px solid #505a82;
+    box-shadow: 0px -7px 0px #19191e;
+    margin: 0px 20px 0px 0px;
+    border-right: rgba(0, 0, 0, 0);
+    border-bottom: rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+#waybar.cornertwo #custom-corner {
+    border: 2px solid #505a82;
+    box-shadow: 0px 7px 0px #19191e;
+    margin: 0px 20px 0px 0px;
+    border-right: rgba(0, 0, 0, 0);
+    border-top: rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+#waybar.controls #custom-controlmax {
+    background: #a0e6af;
+    box-shadow: 0px 3px 0px 0px #222228;
+    background-clip: padding-box;
+    border: 2px solid #2b2b33;
+    border-radius: 5px;
+    margin: 7px 0px 7px 0px;
+    padding: 0px 2px 0px 2px;
+}
+
+#waybar.controls #custom-controlmin {
+    background: #ffcd96;
+    background-clip: padding-box;
+    box-shadow: 0px 3px 0px 0px #222228;
+    border: 2px solid #2b2b33;
+    border-radius: 5px;
+    margin: 7px 15px 7px 15px;
+    padding: 0px 2px 0px 2px;
+}
+
+#waybar.controls #custom-controlx {
+    background: #e68383;
+    background-clip: padding-box;
+    box-shadow: 0px 3px 0px 0px #222228;
+    border: 2px solid #2b2b33;
+    border-radius: 5px;
+    margin: 7px 5px 7px 0px;
+    padding: 0px 2px 0px 2px;
+}
+
+#waybar.controls #custom-controlsticky {
+    background: #91ace3;
+    background-clip: padding-box;
+    box-shadow: 0px 3px 0px 0px #222228;
+    border: 2px solid #2b2b33;
+    border-radius: 5px;
+    margin: 7px 5px 7px 10px;
+    padding: 0px 2px 0px 2px;
 }

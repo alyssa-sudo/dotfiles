@@ -1,0 +1,15 @@
+{
+	"name": "widget",
+	"mode": "overlay",
+	"exclusive": "false",
+	"layer": "bottom",
+	"height": 400,
+	"width": 400,
+	"position": "left",
+	"modules-left": ["pulseaudio/slider" ],
+	"pulseaudio/slider": {
+    	"min": 0,
+    	"max": 100,
+    	"orientation": "horizontal"
+	},
+}

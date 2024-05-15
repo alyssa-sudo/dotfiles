@@ -7,5 +7,4 @@ exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec gentoo-pipewire-launcher &
 exec mako &
 exec foot --server &
-exec waybar &
-exec waybar -c ~/.config/waybar/config-corner -s ~/.config/waybar/style-corner.css &
+exec .config/sway/scripts/battery.sh

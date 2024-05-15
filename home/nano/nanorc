@@ -1,5 +1,5 @@
-set linenumbers
 set magic
+# set linenumbers
 set numbercolor white,black
 set mouse
 set zero

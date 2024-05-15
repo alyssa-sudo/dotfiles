@@ -1,0 +1,11 @@
+#!/bin/sh
+
+filename=$1
+filename_out="${filename%.*}_out.${filename##*.}"
+audio_device=$(pactl get-default-sink)".monitor"
+
+trap 'ffmpeg -i "$filename" -pix_fmt yuv420p "$filename_out"; exit 1' INT
+
+
+/usr/bin/wf-recorder -f "$filename" -a"$audio_device" 
+

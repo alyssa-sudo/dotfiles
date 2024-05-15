@@ -10,19 +10,24 @@ set $term footclient
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu ~/.config/sway/bemenu
+set $menu ~/.config/sway/bemenu/starmenu
+
 # GTK
 set $gnome-schema org.gnome.desktop.interface
 # Scaling
-output eDP-1 scale 1
+output eDP-1 scale 1.25
+#output HDMI-A-1 pos 0 0
+output HDMI-A-1 mode 1920x1080@165hz
+output eDP-1 pos -1530 250
 
 include ~/.config/sway/autostart
 include ~/.config/sway/keys
 include ~/.config/sway/bar
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
-include ~/.config/sway/themes/madoka/gruvbox-theme
+include ~/.config/sway/themes/freesia/shore-theme
 include ~/.config/sway/laptop
 include ~/.config/sway/display
 include ~/.config/sway/window-rules
 include ~/.config/sway/gtk
+include ~/.config/sway/gestures

@@ -1,0 +1,26 @@
+# Titlebar
+titlebar_padding 3
+title_align center
+default_border normal 0
+font pango:"Source Sans 3" 14
+seat seat0 xcursor_theme phinger-cursors-light 16
+
+# Use exclusively tabbed
+# workspace_layout tabbed
+
+# Gaps
+smart_borders on
+smart_gaps on
+gaps inner 20
+gaps outer 2
+
+# Set the background and foreground colors to white
+set $bg #1D3B9B
+set $fg #1D3B9B
+set $fg2 #9999a8
+
+# Set the border color to white
+client.focused_inactive $bg $bg $bg 
+client.focused $bg $bg $bg $bg 
+client.unfocused $bg $bg $bg
+client.urgent $bg $bg $bg

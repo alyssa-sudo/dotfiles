@@ -1,0 +1,2 @@
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next

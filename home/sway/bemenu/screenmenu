@@ -1,0 +1,20 @@
+#!/bin/sh
+
+screenmenu() {
+	options="\n\n"
+	run=$(echo -e "$options" | bemenu)
+
+
+		case "$run" in
+			"")
+				grimshot copy area
+				;;
+			"")
+				grimshot copy window
+				;;
+			"")
+				grimshot copy screen
+				;;
+		esac
+}
+screenmenu "$@"

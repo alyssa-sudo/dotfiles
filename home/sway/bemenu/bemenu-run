@@ -1,0 +1,27 @@
+#!/bin/sh
+font="Source Sans 3 Bold 10"
+background="#19191e"
+foreground="#9999a8"
+hint="#505a82"
+
+exec /usr/bin/bemenu-run -n \
+						 -b \
+						 -M 0 \
+						 -H 45 \
+						 --hp 5 \
+						 --ch 15 \
+						 --cw 2 \
+						 --fn "$font" \
+						 --tb "$background" \
+						 --fb "$background" \
+						 --nb "$background" \
+						 --sb "$background" \
+						 --hb "$background" \
+						 --fbb "$background" \
+						 --ab "$background" \
+					     --tf "$foreground" \
+						 --hf "$hint" \
+						 --nf "$foreground" \
+						 --fbf "$foreground" \
+						 --af "$foreground" \
+						 "$@"

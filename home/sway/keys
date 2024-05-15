@@ -18,6 +18,9 @@
     # mouse button for dragging.
     floating_modifier $mod
 
+	# Screenshot utility
+	bindsym $mod+Shift+s exec screenmenu
+	
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+. "$HOME/.config/bemenu-opt"
+bemenu_opts="$bemenu_opts"
+
+batmemu() {
+	opts="Battery Saver\nPower Saving\nBalanced\nPerformance"
+	sel_opt=$(echo -e "$opts" | "$bemenu_opts" -p "Choose a Power option:"
+	case "$sel_opt" in
+		"Battery Saver")
+			batmenu_sub
+			;;
+		"Power Saving")
+			
+			;;
+		"Balanced")
+			;;
+		"Performace")
+			;;
+		"Cancel")
+			;;
+
+}

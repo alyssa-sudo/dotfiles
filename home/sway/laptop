@@ -1,6 +1,7 @@
 # Touchpad
-input "1739:0:Synaptics_TM3075-002" {
-	dwt disabled
+input type:touchpad {
+	dwt enabled
+	scroll_factor 0.2
 	tap enabled
 	natural_scroll enabled
 	middle_emulation enabled

@@ -1,0 +1,101 @@
+{
+	"exclusive": true,
+	"gtk-layer-shell": true,
+	"width": 10,
+	"layer": "bottom",
+	"position": "left",
+	"margin": 0,
+	"mode": "",
+	"modules-left": ["custom/launcher", "sway/mode", "sway/workspaces"],
+	"modules-right": ["custom/discipline", "custom/bluetooth", "network", "wireplumber", "battery", "battery#bat2", "clock", "custom/power"],
+	"clock": {
+		"interval": 60,
+		"timezones": ["America/New_York", "US/Hawaii"],
+		"tooltip-format": "{calendar}",
+		"format": "    {:\n  %I\n  %M\n %p}",
+		"format-alt": "   {:\n  %a \n%h \n   %d}",
+		"calendar": {
+			"format": {
+				"today": "<u>{}</u>"
+			},
+			"actions": {
+				"on-scroll-up": "shift_up",
+				"on-scroll-down": "shift_down"
+			}
+		},
+		"actions": {
+			"on-click-right": "tz_up"
+		}
+	},
+	"sway/window": {
+		"rotate": 90,
+		"max-length": 40,
+		"tooltip": false
+	},
+	"network": {
+		"format-wifi": "",
+		"format-ethernet": "",
+		"format-disconnected": "",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-disconnected": "Disconnected",
+		"on-click": "$HOME/.config/sway/bemenu-wifi",
+		"max-length": 50
+	},
+	"wireplumber": {
+		"format": "{icon}",
+		"max-volume": 100,
+		"scroll-step": 0.2,
+		"on-click": "$HOME/.config/sway/bemenu-audio",
+		"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"tooltip-format": "{volume}",
+		"format-muted": "",
+		"format-icons": ["", "", ""]
+	},
+	"battery": {
+		"bat": "BAT1",
+		"format": "{icon}",
+		"format-icons": ["", "", "", "", ""],
+		"tooltip-format": "{timeTo} {capacity}%"
+	},
+	"battery#bat2": {
+		"bat": "BAT0",
+		"format": "{icon}",
+		"format-icons": ["", "", "", "", ""],
+		"tooltip-format": "{timeTo} {capacity}%"
+	},
+	"custom/launcher": {
+		"format": "",
+		"tooltip": false,
+		"on-click": "$HOME/.config/sway/bemenu"
+	},
+	"custom/power": {
+		"format": "",
+		"tooltip": false,
+		"on-click": "$HOME/.config/sway/bemenu-power"
+	},
+	"custom/bluetooth": {
+		"format": "",
+		"tooltip": true,
+		"tooltip-format": " ",
+		"on-click": "$HOME/.config/sway/bemenu-bluetooth"
+	},
+	"custom/discipline": {
+		"format": "",
+		"tooltip": true,
+		"tooltip-format": " ",
+		"on-click": "$HOME/.config/sway/discipline.sh"
+	},
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"persistent_workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+			"4": []
+		}
+	},
+	"sway/mode": {
+		"format": "{}"
+	}
+}

@@ -1,0 +1,16 @@
+workspaces {
+	background: rgba(0, 0, 255, 255);
+}
+
+window.spaces #workspaces .buttons {
+	background: #cc0000;
+	border-radius: 10px;
+}
+
+#custom-windowcontrol1 {
+	color: #FFFFFF;
+	background: #FFFFFF;
+	margin: 5px 15px 5px 15px;
+	padding: 5px 0px 5px 0px;
+	border-radius: 10px;
+}

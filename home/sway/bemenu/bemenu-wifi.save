@@ -1,0 +1,46 @@
+#!/bin/bash
+
+function switch_wifi {
+    # Get the current Wi-Fi connection
+    current_connection=$(iwctl station wlan0 show | grep "Connected network" | awk '{print $3}')
+
+    # Get a list of available Wi-Fi networks and extract SSIDs
+    networks=$(iwctl station wlan0 get-networks | awk '$1 ~ /^[[:alnum:]]/ && !/Available/ {print $1}')
+
+    # Use bemenu to display the list of Wi-Fi networks
+    selected_network=$(echo "$networks" | grep -v "available" | bemenu -p "Switch Wi-Fi Network:" \
+        --fn "Source Sans 3 Bold 10" --tb "#19191e" --fb "#19191e" --nb "#19191e" \
+        --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" \
+        --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+
+    if [[ -n $selected_network ]]; then
+        # Prompt the user for the Wi-Fi password with hidden input
+        password=$(bemenu -p "Enter Wi-Fi Password:" --password \
+            --fn "Source Sans 3 Bold 10" --tb "#19191e" --fb "#19191e" --nb "#19191e" \
+            --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" \
+            --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+
+        # Connect to the selected Wi-Fi network with the entered password
+        (iwctl station wlan0 connect "$selected_network" -p "$password" && \
+            notify-send "Wi-Fi Connection" "Successfully connected to $selected_network") || \
+            (notify-send "Wi-Fi Connection" "Failed to connect to $selected_network" && \
+            iwctl station wlan0 connect "$current_connection" &)
+
+        # Add a timeout to wait for connection status
+        timeout=  # Set a reasonable timeout value in seconds
+        end_time=$((SECONDS + timeout))
+        
+        while [[ $SECONDS -lt $end_time ]]; do
+            if iwctl station wlan0 show | grep -q "State: connected"; then
+                exit 0  # Connected successfully, exit the loop
+            fi
+            sleep 1
+        done
+
+        # If the loop completes without successful connection, revert to the original connection
+        iwctl station wlan0 connect "$current_connection"
+        notify-send "Wi-Fi Connection" "Failed to connect to $selected_network. Reverted to the original connection."
+    fi
+}
+
+switch_wifi

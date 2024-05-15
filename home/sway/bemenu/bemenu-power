@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function power {
+	options="Shutdown\nRestart\nSleep\nCancel"
+	selected=$(echo -e $options | bemenu -n -b -M 0 -p "Select Option:" -H 45 --ch 15 --cw 2 --fn "Source Sans 3 Bold 10" --hp 5 --tb "#19191e" --fb "#19191e" --nb "#19191e" --sb "#19191e" --hb "#19191e" --fbb "#19191e" --ab "#19191e" --tf "#9999a8" --hf "#505a82" --nf "#9999a8" --fbf "#9999a8" --af "#9999a8")
+	if [[ $selected = "Shutdown" ]]; then
+		loginctl poweroff
+	elif [[ $selected = "Restart" ]]; then
+		loginctl reboot
+	elif [[ $selected = "Sleep" ]]; then
+		loginctl suspend
+	elif [[ $selected = "Cancel" ]]; then
+		return
+	fi
+}
+
+power
